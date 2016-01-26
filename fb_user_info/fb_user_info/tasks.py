@@ -12,7 +12,7 @@ logger = logging.getLogger('fb_user_info.fb_user_info.tasks')
 def create_facebook_user_info(graph_info):
     logger.info(
         u"Start creation of User ID {0}".format(graph_info['facebook_id']))
-    city_origin, created = UserFacebookInfo.objects.get_or_create(
+    user_facebook, created = UserFacebookInfo.objects.get_or_create(
         facebook_id=graph_info['facebook_id'],
         # username=graph_info['username'],
         name=graph_info['name'],

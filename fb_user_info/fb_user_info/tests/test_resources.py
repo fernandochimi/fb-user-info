@@ -28,7 +28,7 @@ class BaseResourceTest(TestCase):
             facebook_id=u"987465416",
             username=u"new-user",
             name="New User",
-            gender="female",
+            gender=None,
         )
 
     def test_01_unauthorized(self):
@@ -44,32 +44,37 @@ class UserFacebookInfoResourceTest(BaseResourceTest):
             self.token.token))
         self.assertEqual(response.status_code, 200)
 
-    def test_02_detail_facebook_user(self):
+    def test_02_filter_list_facebook_by_gender(self):
+        "Filter List Users Facebook by gender"
+        response = self.client.get(
+            "/api/v1/fb-user/?token={0}&gender=male".format(self.token.token))
+        self.assertEqual(response.status_code, 200)
+
+    def test_03_detail_facebook_user(self):
         "Detail a Facebook User"
         response = self.client.get("/api/v1/fb-user/{0}/?token={1}".format(
             self.user_facebook.facebook_id, self.token.token))
         self.assertEqual(response.status_code, 200)
 
-    def test_03_facebook_user_does_not_exist(self):
+    def test_04_facebook_user_does_not_exist(self):
         "Facebook User does not exist"
-        response = self.client.get("/api/v1/fb-user/000000/?token={0}".format(
-            self.token.token))
+        response = self.client.get(
+            "/api/v1/fb-user/does-not-exist/?token={0}".format(
+                self.token.token))
         self.assertEqual(response.status_code, 404)
 
-    def test_04_create_type(self):
-        "Create a type"
-        response = self.client.post("/api/v1/fb-user/?token={0}".format(
-            self.token.token), json.dumps(
-            self.new_user_facebook.facebook_id, default=jdefault),
-            content_type="application/json")
-
+    def test_05_get_facebook_user_and_save_in_database(self):
+        "Get user facebook info and save in database"
+        self.client.get(
+            "/api/v1/fb-user/7878415652/?token={1}".format(
+                self.new_user_facebook.facebook_id,
+                self.token.token))
         create_new_user_facebook = create_facebook_user_info.delay(
-            self.new_user_facebook)
-        self.assertTrue(create_new_user_facebook, "987465416")
-        self.assertEqual(response.status_code, 201)
+            "7878415652")
+        self.assertTrue(create_new_user_facebook, "7878415652")
 
-    def test_05_delete_type(self):
-        "Delete a type"
+    def test_06_delete_user_facebook(self):
+        "Delete User Facebook"
         response = self.client.delete("/api/v1/fb-user/{0}/?token={1}".format(
             self.new_user_facebook.facebook_id, self.token.token))
         self.assertEqual(response.status_code, 204)

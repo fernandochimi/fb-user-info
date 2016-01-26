@@ -21,4 +21,4 @@ class UserFacebookInfoTest(TestCase):
         "User Facebook Info must be a unicode"
         self.assertEqual(
             unicode(self.user_facebook), u"{0}".format(
-                self.user_facebook.name))
+                self.user_facebook.facebook_id))

@@ -23,11 +23,6 @@ class BaseResource(DjangoResource):
 
     preparer = FieldsPreparer(fields={})
 
-    def not_found(self, class_name, field_type, id_data):
-        raise NotFound(
-            msg="404 - {0} with {1} {2} not found".format(
-                class_name, field_type, id_data))
-
     def filters(self, request):
         items = {}
         for key, value in self.request.GET.items():
@@ -77,9 +72,10 @@ class BaseResource(DjangoResource):
     def get_graph_facebook_info(self, facebook_id):
         try:
             response = requests.get(
-                'http://graph.facebook.com/' + str(facebook_id) +
-                'access_token={0}'.format(
+                'https://graph.facebook.com/' + str(facebook_id) +
+                '?access_token={0}'.format(
                     settings.FACEBOOK_TOKEN), timeout=5).json()
+            print response
             return self.prepare_graph_info(response).value
         except:
             return False
@@ -98,6 +94,7 @@ class BaseResource(DjangoResource):
             'name': graph_info['name'],
             'gender': get_gender,
         }
+        return False
         create_facebook_user_info.delay(graph_data)
         return graph_data
 
@@ -107,6 +104,10 @@ class UserFacebookInfoResource(BaseResource):
         'facebook_id': 'facebook_id',
         # 'username': 'username',
         'name': 'name',
+        'gender': 'gender',
+    }
+
+    dict_filters = {
         'gender': 'gender',
     }
 
@@ -123,8 +124,11 @@ class UserFacebookInfoResource(BaseResource):
         self.preparer.fields = self.fields
         try:
             return self.queryset(request=self.request).get(facebook_id=pk)
-        except UserFacebookInfo.DoesNotExist:
-            return self.not_found(self.__class__.__name__, "ID", pk)
+        except:
+            user_fb_info = self.get_graph_facebook_info(facebook_id=pk)
+            user_fb_task = create_facebook_user_info.delay(user_fb_info)
+            return self.queryset(request=self.request).get(
+                facebook_id=user_fb_task.get('user_facebook.facebook_id'))
 
     def delete(self, pk):
         return UserFacebookInfo.objects.get(facebook_id=pk).delete()
