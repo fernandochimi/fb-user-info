@@ -1,0 +1,74 @@
+.DS_Store
+
+## Python Extensions
+*.pyc
+*.py[cod]
+.Python
+
+## C Extensions
+*.so
+
+## Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+include
+var
+sdist
+develop-eggs
+.instaled.cfg
+lib
+lib64
+__pycache__
+
+## Install logs
+pip-log.txt
+
+## Unit test / Coverage reports
+.coverage
+.tox
+nosetests.xml
+htmlcov
+
+## Docs
+docs/_build
+docs/_static
+docs/_templates
+
+## Translations
+*.mo
+
+## Mr. Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+## VirtualEnv Folder
+venv
+
+## Databases
+*.db
+*.sqlite
+*.sqlite3
+*.rdb
+
+## Env File Configuration
+.env
+
+## Staticfiles
+**staticfiles
+**/staticfiles
+staticfiles/
+
+## Media Files
+**/filer_public
+**/filer_public_thumbnails
+**/uploads
+**/upload
+
+## Log Files
+*.log
