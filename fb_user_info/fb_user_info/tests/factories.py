@@ -1,6 +1,5 @@
 # coding: utf-8
 import factory
-import factory.fuzzy
 import uuid
 
 from datetime import datetime
