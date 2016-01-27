@@ -24,7 +24,7 @@ class BaseResourceTest(TestCase):
 
         self.new_user_facebook = UserFacebookInfoFactory.create(
             facebook_id=u"78964533213",
-            username=u"new-user",
+            link=u"https://www.facebook.com/app_scoped_user_id/78964533213",
             name="New User",
             gender=None,
         )

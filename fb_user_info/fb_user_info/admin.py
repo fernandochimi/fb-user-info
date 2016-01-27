@@ -12,9 +12,9 @@ class TokenAdmin(admin.ModelAdmin):
 
 
 class UserFacebookInfoAdmin(admin.ModelAdmin):
-    list_display = ("facebook_id", "username", "name", "gender", )
+    list_display = ("facebook_id", "link", "name", "gender", )
     list_filter = ("gender",)
-    search_fields = ("name", "username",)
+    search_fields = ("name",)
 
 
 admin.site.register(Token, TokenAdmin)

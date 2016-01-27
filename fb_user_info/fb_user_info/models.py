@@ -26,7 +26,7 @@ class Token(models.Model):
 
 class UserFacebookInfo(models.Model):
     facebook_id = models.IntegerField(primary_key=True)
-    username = models.CharField(max_length=255, null=True, blank=True)
+    link = models.URLField(max_length=255, null=True, blank=True)
     name = models.CharField(max_length=255, null=True, blank=True)
     gender = models.CharField(max_length=255, null=True, blank=True)
 

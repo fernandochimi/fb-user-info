@@ -5,7 +5,6 @@ import uuid
 from datetime import datetime
 
 from django.contrib.auth.models import User
-from django.template.defaultfilters import slugify
 
 from fb_user_info.models import Token, UserFacebookInfo
 
@@ -34,7 +33,7 @@ class UserFacebookInfoFactory(factory.django.DjangoModelFactory):
         model = UserFacebookInfo
 
     facebook_id = factory.Sequence(lambda n: u"132060404%s" % n)
-    username = factory.LazyAttributeSequence(
-        lambda o, n: u"%s-%d" % (slugify(o.name), n))
+    link = u"https://www.facebook.com/app_scoped_user_id/{0}".format(
+        facebook_id)
     name = factory.Sequence(lambda n: u"User Random%s" % n)
     gender = 'male'

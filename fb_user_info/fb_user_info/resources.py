@@ -91,7 +91,7 @@ class BaseResource(DjangoResource):
             gender = graph_info['gender']
         graph_data = {
             'facebook_id': graph_info['id'],
-            # 'username': graph_info['username'],
+            'link': graph_info['link'],
             'name': graph_info['name'],
             'gender': gender,
         }
@@ -102,7 +102,7 @@ class BaseResource(DjangoResource):
 class UserFacebookInfoResource(BaseResource):
     fields = {
         'facebook_id': 'facebook_id',
-        # 'username': 'username',
+        'link': 'link',
         'name': 'name',
         'gender': 'gender',
     }
