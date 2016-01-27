@@ -1,21 +1,9 @@
 # coding: utf-8
-
-from datetime import datetime
-from decimal import Decimal
-
 from django.test import TestCase
 
 from fb_user_info.tasks import create_facebook_user_info
 
 from factories import TokenFactory, UserFacebookInfoFactory
-
-
-def jdefault(o):
-    if type(o) is datetime.date or type(o) is datetime:
-        return o.isoformat()
-    if type(o) is Decimal:
-        return str(o)
-    return o.__dict__
 
 
 class BaseResourceTest(TestCase):
@@ -68,8 +56,8 @@ class UserFacebookInfoResourceTest(BaseResourceTest):
             "/api/v1/fb-user/789897897/?token={0}".format(
                 self.token.token))
         create_new_user_facebook = create_facebook_user_info.delay(
-            self.new_user_facebook)
-        self.assertTrue(create_new_user_facebook, "7878415652")
+            789897897)
+        self.assertTrue(create_new_user_facebook, 7878415652)
 
     def test_06_delete_user_facebook(self):
         "Delete User Facebook"
