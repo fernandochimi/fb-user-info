@@ -3,13 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Facebook User Info's documentation!
+Facebook User Info
 ==============================================
 
-Contents:
+	Get informations of the users from Facebook with this service!
 
-.. toctree::
-   :maxdepth: 2
+	Contents:
+
+	.. toctree::
+	   :maxdepth: 2
+
+	   tutorial
+	   changelog
 
 
 
@@ -17,6 +22,6 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
+.. * :ref:`modindex`
 
