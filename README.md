@@ -1,4 +1,7 @@
 # fb-user-info
+
+![alt text](https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-128.png "Facebook")
+
 API to save user information from Facebook to your database.
 
 ## How to use
