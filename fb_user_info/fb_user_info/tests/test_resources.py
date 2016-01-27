@@ -68,7 +68,7 @@ class UserFacebookInfoResourceTest(BaseResourceTest):
             "/api/v1/fb-user/789897897/?token={0}".format(
                 self.token.token))
         create_new_user_facebook = create_facebook_user_info.delay(
-            "7878415652")
+            self.new_user_facebook)
         self.assertTrue(create_new_user_facebook, "7878415652")
 
     def test_06_delete_user_facebook(self):
