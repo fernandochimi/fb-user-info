@@ -7,6 +7,8 @@ API to save user information from Facebook to your database.
 * Install ``requirments.txt`` with ``pip install -r requirments.txt``
 * Before start, run ``python fb_user_info/manage.py migrate --settings=settings.dev``
 * Create a superuser with ``python fb_user_info/manage.py createsuperuser --settings=settings.dev`` to access admin page (``http://localhost:8000/admin``)
+* In another terminal, run ``redis-server`` to activate the service
+* In another terminal, enter on ``fb_user_info`` (with underscores) and run ``celery worker -A settings -l INFO`` to activate ``Celery`` service
 * Run the project with ``python fb_user_info/manage.py runserver --settings=settings.dev``
 
 ## ``Makefile`` Tips
