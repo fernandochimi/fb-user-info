@@ -17,7 +17,7 @@ API to save user information from Facebook to your database.
 * Execute ``make clean`` to clean unecessary files of project.
 
 ## ``requirements.txt``
-* ``Django 1.8.8`` - Framework to support a admin site.
+* ``Django 1.8.8`` - A Python Framework to support the project.
 * ``Django Flat Theme`` - A nice Django theme.
 * ``Restless`` - A python Rest microframework.
 * ``Factory Boy`` - App to make mocks.
