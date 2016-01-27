@@ -44,16 +44,20 @@ List the Facebook Users Info
 			"objects": [
 				{
 				    "facebook_id": 100011170511979,
+				    "link": "https://www.facebook.com/app_scoped_user_id/121802561535427/",
 					"name": "Fernando Chimicoviaki",
 					"gender": "male",
 				},
 
 				{
 				    "facebook_id": 132416543126,
+				    "link": "https://www.facebook.com/app_scoped_user_id/100000024502625/",
 					"name": "Female User",
 					"gender": "female",
 				},
 			]
+
+	**NOTE ABOUT FIELD LINK**: The field ``link`` is avaliable in the API Graph V2.0 and higher. The field ``username`` was deprecated. Because of this, the field ``username`` was replaced by ``link``.
 
 
 Detail Facebook User Info
@@ -70,6 +74,7 @@ Detail Facebook User Info
 
 			{
 			    "facebook_id": 100011170511979,
+			    "link": "https://www.facebook.com/app_scoped_user_id/121802561535427/",
 				"name": "Fernando Chimicoviaki",
 				"gender": "male",
 			},
