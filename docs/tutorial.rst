@@ -27,9 +27,10 @@ List the Facebook Users Info
 	``curl -X GET "http://localhost:8000/api/v1/fb-user/?token={valid_token}"``
 
 	Ok! You get the API Token to access the service.
-	To Request the list of Facebook Users, access ``http://localhost:8000/api/v1/fb-user/?token={valid_token}&limit={limit}``, where:
+	To Request the list of Facebook Users, access ``http://localhost:8000/api/v1/fb-user/?token={valid_token}&limit={limit}&gender={gender}``, where:
 		- **valid_token** (**Required**): Token generated in Admin Page of Project (String);
 		- **limit**: The limit of Users to display in this page. The default is 10 (Integer);
+		- **gender**: The filter by gender of the User (String);
 
 	Response:
 		.. code-block:: json
