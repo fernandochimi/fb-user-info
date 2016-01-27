@@ -61,6 +61,7 @@ Detail Facebook User Info
 	``curl -X GET "http://localhost:8000/api/v1/fb-user/{facebook_id}/?token={valid_token}"``
 
 	To Request the detail of Facebook User, access ``http://localhost:8000/api/v1/fb-user/{facebook_id}/?token={valid_token}``, where:
+
 		- **facebook_id** (**Required**): The id of the user that you get some information;
 		- **valid_token** (**Required**): Token generated in Admin Page of Project (String);
 
@@ -73,7 +74,7 @@ Detail Facebook User Info
 				"gender": "male",
 			},
 
-	**Note**: The request detail of the user will get data first in the database. If the User does not exist in the database API, the service will consult ``graph.facebook.com`` to get the informations and save. By the command ``GET`` above, the API service do this automatically.
+	**Note**: The request detail of the user will get data first in the database. If the User does not exist in the database API, the service will consult ``https://graph.facebook.com`` to get the informations and save. If the user does not have ``gender``, the service will consult ``https://api.genderize.io`` to get the gender by the first name. By the command ``GET`` above, the API service do this automatically.
 
 
 Delete Facebook User Info
@@ -81,5 +82,6 @@ Delete Facebook User Info
 	``curl -X DELETE "http://localhost:8000/api/v1/fb-user/{facebook_id}/?token={valid_token}"``
 
 	To delete a Facebook User, type in terminal ``curl -X DELETE "http://localhost:8000/api/v1/fb-user/{facebook_id}/?token={valid_token}"``, where:
+
 		- **facebook_id** (**Required**): The id of the user that you get some information;
 		- **valid_token** (**Required**): Token generated in Admin Page of Project (String);
