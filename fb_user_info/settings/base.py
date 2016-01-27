@@ -77,18 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -108,4 +96,4 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-FACEBOOK_TOKEN = 'CAACEdEose0cBAAJpXheNbNfQU9C5p5Q87E0T7BUuOedK3zk5PlcvYsbBHYGkMPovRqjToE51p6rWXFijMRr95BWA7neA48HhWoQgnGZCMHAYR8ZCZAAXkYpZAGgBfQredqnQtbTmzsospIVannkDoZCSSdY0397xK5gNF8LIxJSbnxoedJGf1ZAf6cVoIlQiM62g9NCqUeYAZDZD'
+FACEBOOK_TOKEN = 'CAACEdEose0cBAHrVdbRdCHJZBr5vPRNA1wmLW0lvUJMlGFWG5ERPUqxbZCxZCcSo7pBTHQ7iXt4W78a9NsjbHgxMHZBzQoeDoieykgHembynB1iZAwkaAuNZBeKQqNnmsbPmuLWGyDvh3lVKb5xnZBOaTiwWh4hf15Yt0mW7xzLy2Nop8kewqOHQMjkNZBkenNYdnAHXWn3GbZCyC1gIr2cAQ'

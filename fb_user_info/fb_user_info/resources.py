@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from django.conf import settings
 
 from restless.dj import DjangoResource
-from restless.exceptions import NotFound, Unauthorized
+from restless.exceptions import Unauthorized
 from restless.preparers import FieldsPreparer
 from restless.resources import skip_prepare
 
@@ -75,26 +75,26 @@ class BaseResource(DjangoResource):
                 'https://graph.facebook.com/' + str(facebook_id) +
                 '?access_token={0}'.format(
                     settings.FACEBOOK_TOKEN), timeout=5).json()
-            print response
             return self.prepare_graph_info(response).value
         except:
             return False
 
     @skip_prepare
     def prepare_graph_info(self, graph_info):
-        if not graph_info['gender']:
-            get_first_name = graph_info['name'].split('')[0]
+        if not graph_info.get('gender'):
+            get_first_name = graph_info['name'].split(' ')[0]
             get_gender = requests.get(
-                'https://api.genderize.io/?name={0}'.format(get_first_name))
+                'https://api.genderize.io/?name={0}'.format(
+                    get_first_name), timeout=5).json()
+            gender = get_gender['gender']
         else:
-            get_gender = graph_info['gender']
+            gender = graph_info['gender']
         graph_data = {
             'facebook_id': graph_info['id'],
             # 'username': graph_info['username'],
             'name': graph_info['name'],
-            'gender': get_gender,
+            'gender': gender,
         }
-        return False
         create_facebook_user_info.delay(graph_data)
         return graph_data
 

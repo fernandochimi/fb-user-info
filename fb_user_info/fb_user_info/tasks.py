@@ -20,3 +20,4 @@ def create_facebook_user_info(graph_info):
     )
     logger.info(
         u"User ID {0} created with success".format(graph_info['facebook_id']))
+    return user_facebook.facebook_id
