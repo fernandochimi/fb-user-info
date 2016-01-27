@@ -36,5 +36,5 @@ class UserFacebookInfoFactory(factory.django.DjangoModelFactory):
     facebook_id = factory.Sequence(lambda n: u"132060404%s" % n)
     username = factory.LazyAttributeSequence(
         lambda o, n: u"%s-%d" % (slugify(o.name), n))
-    name = factory.Sequence(lambda n: u"User %s" % n)
+    name = factory.Sequence(lambda n: u"User Random%s" % n)
     gender = 'male'

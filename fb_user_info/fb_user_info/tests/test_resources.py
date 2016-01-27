@@ -1,6 +1,4 @@
 # coding: utf-8
-import json
-
 from datetime import datetime
 from decimal import Decimal
 
@@ -25,7 +23,7 @@ class BaseResourceTest(TestCase):
         self.user_facebook = UserFacebookInfoFactory()
 
         self.new_user_facebook = UserFacebookInfoFactory.create(
-            facebook_id=u"987465416",
+            facebook_id=u"78964533213",
             username=u"new-user",
             name="New User",
             gender=None,
@@ -66,11 +64,11 @@ class UserFacebookInfoResourceTest(BaseResourceTest):
     def test_05_get_facebook_user_and_save_in_database(self):
         "Get user facebook info and save in database"
         self.client.get(
-            "/api/v1/fb-user/7878415652/?token={1}".format(
+            "/api/v1/fb-user/{0}/?token={1}".format(
                 self.new_user_facebook.facebook_id,
                 self.token.token))
         create_new_user_facebook = create_facebook_user_info.delay(
-            "7878415652")
+            7878415652)
         self.assertTrue(create_new_user_facebook, "7878415652")
 
     def test_06_delete_user_facebook(self):
